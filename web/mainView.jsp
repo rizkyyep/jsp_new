@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Halaman Utama!</h1>
-        <a href="regionServlet">Region</a>
-    </body>
+        <a href="regionServlet?action=list">Region</a>
+    </body> 
 </html>

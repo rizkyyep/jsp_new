@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Create Region</h1>
-    <form action="${pageContext.request.contextPath}/regionServlet" method="post">
+    <form action="regionServlet?action=insert" method="post">
         <table border="0">
             <tbody>
                 <tr>

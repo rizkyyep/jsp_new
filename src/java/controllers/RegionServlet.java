@@ -5,10 +5,10 @@ package controllers;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import daos.GeneralDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,20 +47,11 @@ public class RegionServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegionServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RegionServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            List<Region> regions = this.dao.select("Region");
-            request.setAttribute("regions", regions);
-            RequestDispatcher rd = request.getRequestDispatcher("listRegion.jsp");
-            rd.forward(request, response);
+
+//            List<Region> regions = this.dao.select("Region");
+//            request.setAttribute("regions", regions);
+//            RequestDispatcher rd = request.getRequestDispatcher("listRegion.jsp");
+//            rd.forward(request, response);
         }
     }
 
@@ -76,7 +67,38 @@ public class RegionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String redirect = "";
+        String action = request.getParameter("action");
+        try {
+            switch (action) {
+                case "insert":
+                    redirect = "listRegion.jsp";
+                    insert(request, response);
+                    break;
+//            case "/insert":
+//                insertBook(request, response);
+//                break;
+                case "delete":
+                    redirect = "listRegion.jsp";
+                    delete(request, response);
+                    break;
+//            case "/edit":
+//                showEditForm(request, response);
+//                break;
+//            case "/update":
+//                updateBook(request, response);
+//                break;
+                default:
+                    redirect = "listRegion.jsp";
+                    list(request, response);
+                    break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
+        RequestDispatcher rd = request.getRequestDispatcher(redirect);
+        rd.forward(request, response);
+//        processRequest(request, response);
     }
 
     /**
@@ -90,23 +112,43 @@ public class RegionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-    String id = request.getParameter("idRegion");
-    String name = request.getParameter("nameRegion");
-//    String gender = request.getParameter("gender");
-//    boolean agree = request.getParameter("agree") != null;
-//    String[] roles = request.getParameterValues("role");
-//    String countryCode = request.getParameter("countryCode");
-//    String[] animalIds = request.getParameterValues("animalId");
+        doGet(request, response);
+    }
+
+    private void delete(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        dao.delete(new Region(id));
+        List<Region> regions = this.dao.select("Region");
+        request.setAttribute("regions", regions);
+//        RequestDispatcher rd = request.getRequestDispatcher("listRegion.jsp");
+//        rd.forward(request, response);
+//        response.sendRedirect("list");
+    }
+
+    private void insert(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException {
+        String id = request.getParameter("idRegion");
+        String name = request.getParameter("nameRegion");
 //    String message = request.getParameter("message");
-    boolean saveButtonPressed = request.getParameter("save") != null;
+        List<Region> regions = this.dao.select("Region");
+        request.setAttribute("regions", regions);
+        boolean saveButtonPressed = request.getParameter("save") != null;
         if (saveButtonPressed) {
-            dao.save(new Region(Integer.parseInt(id), name));
-            response.sendRedirect("listRegion.jsp");
-        }else{
+             String message = request.getParameter("message");
+        } else {
             dao.save(new Region(Integer.parseInt(id), name));
             response.sendRedirect("regionServlet");
         }
+    }
+
+    private void list(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        List<Region> regions = this.dao.select("Region");
+        request.setAttribute("regions", regions);
+//        RequestDispatcher rd = request.getRequestDispatcher("listRegion.jsp");
+//        rd.forward(request, response);
     }
 
     /**
