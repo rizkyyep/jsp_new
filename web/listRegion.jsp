@@ -8,80 +8,68 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:include page="templates/header.jsp"></jsp:include>
+<jsp:include page="templates/sidebar.jsp"></jsp:include>
+<jsp:include page="templates/topbar.jsp"></jsp:include>
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="overview-wrap">
+                            <h2 class="title-1">Region Data</h2>
+                            <a href="createRegion.jsp" class="au-btn au-btn-icon au-btn--blue">
+                                <i class="zmdi zmdi-plus"></i>add item</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-t-25">
+                    <div class="col-12">
+                        <div class="table-responsive table--no-card m-b-30">
+                            <table class="table table-borderless table-striped table-earning">
+                            <% List<Region> regions = (ArrayList<Region>) request.getAttribute("regions"); %>
+                            <thead>
+                                <tr>
+                                    <th>Region ID</th>
+                                    <th>Region Rame</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%for (Region region : regions) {%>
+                                <tr>
+                                    <td><%=region.getRegionId()%></td>
+                                    <td><%= region.getRegionName()%></td>
+                                    <td class="text-right">
+                                        <a href="regionServlet?action=edit&id=<%= region.getRegionId()%>" 
+                                           class="btn btn-success"><i class="fas fa-edit"></i> Edit</a>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="regionServlet?action=delete&id=<%=region.getRegionId()%> " 
+                                           class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                                    </td>
+                                </tr>
+                                <% }%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <style>
-            table {
-                width:100%;
-            }
-            table, th, td {
-                border: 1px solid black;
-                border-collapse: collapse;
-            }
-            th, td {
-                padding: 15px;
-                text-align: left;
-            }
-            table#t01 tr:nth-child(even) {
-                background-color: #eee;
-            }
-            table#t01 tr:nth-child(odd) {
-                background-color: #fff;
-            }
-            table#t01 th {
-                background-color: #cccccc;
-                color: black;
-            }
-            .container{
-                width: 80%;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Region List</h1>
-            <button style="background-color: blue; width: 8%; " onclick="window.location.href = 'createRegion.jsp';"> 
-                Create</button>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                        <h1>Halaman Utama!</h1>
+                        <a href="regionServlet?action=list">Region</a>
+                    </div>
 
-            <br>
-            <br>
-
-            <% List<Region> regions = (ArrayList<Region>) request.getAttribute("regions"); %>
-
-            <table  id="t01" border=1>
-                <tr>
-                    <th>
-                        ID
-                    </th>
-                    <th>
-                        Region Name
-                    </th>
-                    <th style="width: 14%">
-                        Action
-                    </th>
-                <tr>
-
-                    <% for (Region region : regions) {%>
-                <tr>
-                    <td>
-                        <%=region.getRegionId()%>
-                    </td>
-                    <td>
-                        <%= region.getRegionName()%>
-                    </td>
-                    <td>
-                        <a href="/edit?id=<%= region.getRegionId()%> />">Edit</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="regionServlet?action=delete&id=<%=region.getRegionId()%> ">Delete</a>
-                        <!--                        &nbsp;&nbsp;&nbsp;&nbsp;-->
-                    </td>
-                </tr>
-                <% }%>
-            </table>
+                </div>
+            </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+<!-- END MAIN CONTENT-->
+
+
+<jsp:include page="templates/footer.jsp"></jsp:include>
