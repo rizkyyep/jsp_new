@@ -2,7 +2,7 @@
     Document   : mainView
     Created on : 11 Des 19, 14:20:14
     Author     : ASUS
---%>
+--%> 
 <jsp:include page="templates/header.jsp"></jsp:include>
 <jsp:include page="templates/sidebar.jsp"></jsp:include>
 <jsp:include page="templates/topbar.jsp"></jsp:include>
