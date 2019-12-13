@@ -141,7 +141,7 @@
                     </li>
                     <li class="has-sub">
                         <a class="js-arrow" href="#">
-                            <i class="fas fa-copy"></i>Pages</a>
+                           <i class="fas fa-address-book"></i>Pages</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                             <li>
                                 <a href="login.html">Login</a>

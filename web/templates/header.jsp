@@ -39,5 +39,20 @@
 
         <!-- Main CSS-->
         <link href="assets/css/theme.css" rel="stylesheet" media="all">
+        
+        <!-- Datatables CSS-->
+        <link href="assets/vendor/datatables/datatables.css" rel="stylesheet" type="text/css"/>
+        
+        <!-- sweetalert css-->
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+        
+        <!-- Jquery JS-->
+        <script src="assets/vendor/jquery-3.2.1.min.js" type="text/javascript"></script>
+        
+        <!-- Datatables JS-->
+        <script src="assets/vendor/datatables/datatables.js" type="text/javascript"></script>
+        
+        <!-- sweetalert js-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     </head>
     <body>
