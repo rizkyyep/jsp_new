@@ -20,7 +20,7 @@
         </div>
         <div class="col-12 col-md-9">
             <input type="text" id="regionName" value="<%= request.getAttribute("regionName")%>" name="regionName" placeholder="Enter Region Name..." class="form-control">
-        </div>
+        </div> 
     </div>
     <center>
         <input type="submit" name="submit" value="Save" class="btn btn-primary"/>
