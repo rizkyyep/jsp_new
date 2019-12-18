@@ -122,22 +122,28 @@ public class RegionServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
         dao.delete(new Region(id));
-        response.sendRedirect("regionServlet?action=list");
+        request.setAttribute("flash", "Delete");
+        RequestDispatcher rd = request.getRequestDispatcher("regionServlet?action=list");
+        rd.forward(request, response);
     }
 
     private void insert(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
+            throws SQLException, IOException, ServletException {
         String name = request.getParameter("nameRegion");
         dao.save(new Region(max(), name));
-        response.sendRedirect("regionServlet?action=list");
+        request.setAttribute("flash", "Save");
+        RequestDispatcher rd = request.getRequestDispatcher("regionServlet?action=list");
+        rd.forward(request, response);
     }
 
     private void update(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
-        String id = request.getParameter("idRegion");
-        String name = request.getParameter("nameRegion");
+            throws SQLException, IOException, ServletException {
+        String id = request.getParameter("regionId");
+        String name = request.getParameter("regionName");
         dao.save(new Region(Integer.parseInt(id), name));
-        response.sendRedirect("regionServlet?action=list");
+        request.setAttribute("flash", "Update");
+        RequestDispatcher rd = request.getRequestDispatcher("regionServlet?action=list");
+        rd.forward(request, response);
     }
 
     private void showForm(HttpServletRequest request, HttpServletResponse response)
@@ -149,7 +155,7 @@ public class RegionServlet extends HttpServlet {
         String regionName = region.getRegionName();
         request.setAttribute("regionId", regionId);
         request.setAttribute("regionName", regionName);
-        RequestDispatcher rd = request.getRequestDispatcher("updateRegion.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("editRegion.jsp");
         rd.forward(request, response);
     }
 

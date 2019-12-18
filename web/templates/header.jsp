@@ -27,12 +27,27 @@
 
         <!-- Custom CSS -->
         <link href="assets/dist/css/style.min.css" rel="stylesheet">
-
-
+        
+        
         <script src="assets/assets/libs/jquery/dist/jquery.min.js"></script>
+        <!--Wave Effects -->
+        <script src="assets/dist/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="assets/dist/js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="assets/dist/js/custom.min.js"></script>
         <script src="assets/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
         <script src="assets/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
         <script src="assets/assets/extra-libs/DataTables/datatables.min.js"></script>
+
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="assets/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+        <script src="assets/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="assets/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+        <script src="assets/assets/extra-libs/sparkline/sparkline.js"></script>
+
+        <!-- sweetalert js-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
 
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

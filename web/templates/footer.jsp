@@ -26,17 +26,10 @@
 <!-- All Jquery -->
 <!-- ============================================================== -->
 
-<!-- Bootstrap tether Core JavaScript -->
-<script src="assets/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-<script src="assets/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="assets/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-<script src="assets/assets/extra-libs/sparkline/sparkline.js"></script>
-<!--Wave Effects -->
-<script src="assets/dist/js/waves.js"></script>
-<!--Menu sidebar -->
-<script src="assets/dist/js/sidebarmenu.js"></script>
-<!--Custom JavaScript -->
-<script src="assets/dist/js/custom.min.js"></script>
+
+
+
+
 <!--This page JavaScript -->
 <!-- <script src="../../dist/js/pages/dashboards/dashboard1.js"></script> -->
 <!-- Charts js Files -->
@@ -52,22 +45,7 @@
 <!--datatables js-->
 
 
-<script type="text/javascript">
-    /****************************************
-     *       Basic Table                   *
-     ****************************************/
-//    $('#listItem').DataTable();
-    $(document).ready(function () {
-        $('#listItem').DataTable(
-                {
-                    "columnDefs": [
-                        {"orderable": false, "targets": 2}
-                    ]
-                }
-        );
 
-    });
-</script>
 
 </body>
 
