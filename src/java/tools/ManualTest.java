@@ -31,8 +31,8 @@ import org.hibernate.Session;
 public class ManualTest {
 
     public static void main(String[] args) throws ParseException {
-        //System.out.println(HibernateUtil.getSessionFactory());
-        // Session session=HibernateUtil.getSessionFactory().openSession();
+        System.out.println(HibernateUtil.getSessionFactory());
+         Session session=HibernateUtil.getSessionFactory().openSession();
 
 //        Region region=new Region();
 //        region.setRegionId(new BigDecimal(13));
@@ -158,15 +158,5 @@ public class ManualTest {
 
 
         
-          UserAccountController accountController=new UserAccountController();
-         
-         boolean b=  accountController.selectByName("demen");
-         if(b){
-             System.out.println("uname  tersedia");
-
-        }
-         else{
-             System.out.println("uname tidak tersedia");
-         }
     }
 }

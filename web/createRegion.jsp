@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : createRegion
     Created on : 11 Des 19, 16:38:58
@@ -65,6 +66,18 @@
         </div>
     </div>
     <!-- END MAIN CONTENT-->
+    
+    <script type="text/javascript">
+       function coba() {
+        swal({
+  title: 'Congratulation',
+  text: "Success to Save!",
+  type: 'success',
+  timer : 2500
+  
+});
+    }
+</script>
 
 
 <jsp:include page="templates/footer.jsp"></jsp:include>

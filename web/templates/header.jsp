@@ -39,19 +39,22 @@
 
         <!-- Main CSS-->
         <link href="assets/css/theme.css" rel="stylesheet" media="all">
-        
+
         <!-- Datatables CSS-->
         <link href="assets/vendor/datatables/datatables.css" rel="stylesheet" type="text/css"/>
-        
+
         <!-- sweetalert css-->
         <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
         <!-- Jquery JS-->
         <script src="assets/vendor/jquery-3.2.1.min.js" type="text/javascript"></script>
-        
+
         <!-- Datatables JS-->
         <script src="assets/vendor/datatables/datatables.js" type="text/javascript"></script>
-        
+
         <!-- sweetalert js-->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     </head>

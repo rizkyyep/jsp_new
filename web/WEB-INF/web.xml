@@ -8,6 +8,22 @@
         <servlet-name>RegionServlet</servlet-name>
         <servlet-class>controllers.RegionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EmployeeServlet</servlet-name>
+        <servlet-class>controllers.EmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LocationServlet</servlet-name>
+        <servlet-class>controllers.LocationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>list</servlet-name>
+        <servlet-class>controllers.ListAll</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportServlet</servlet-name>
+        <servlet-class>controllers.ReportServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/testServlet</url-pattern>
@@ -15,6 +31,22 @@
     <servlet-mapping>
         <servlet-name>RegionServlet</servlet-name>
         <url-pattern>/regionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeServlet</servlet-name>
+        <url-pattern>/employeeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LocationServlet</servlet-name>
+        <url-pattern>/locationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>list</servlet-name>
+        <url-pattern>/list</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportServlet</servlet-name>
+        <url-pattern>/reportServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

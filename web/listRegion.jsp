@@ -66,7 +66,7 @@
                     <div class="copyright">
                         
                         
-                        <button class="btn btn-primary" onclick="coba()">coba nih</button>
+                        <button class="btn btn-primary" onclick="alertsave()" >coba nih</button>
                         
                         
                         <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
@@ -102,7 +102,9 @@
                         </div>
                     </div>
                     <center>
-                        <input type="submit" name="submit" value="Save" class="btn btn-primary"/>
+                        <input type="submit" name="submit"  value="Save" class="btn btn-primary"/>
+                        
+                        
                     </center>
                 </form>
             </div>
@@ -125,26 +127,20 @@
                     ]
                 }
         );
-
     });
-
-    function coba() {
+    function success() {
         swal({
   title: 'Are you sure?',
   text: "You won't be able to revert this!",
-  type: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
-}).then(function () {
-  swal(
-    'Deleted!',
-    'Your file has been deleted.',
-    'success'
-  )
-})
+  type: 'success'
+  
+});
     }
+    function alertsave(){
+ Swal.fire('Any fool can use a computer')
+    }
+   
+  
 </script>
 
 
