@@ -1,11 +1,10 @@
+<%@page import="models.Region"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html>
+<html dir="ltr" lang="en">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +13,7 @@ and open the template in the editor.
         <meta name="description" content="">
         <meta name="author" content="">
         <!-- Favicon icon -->
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/assets/images/icon.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
         <title>Metrodata System</title>
         <!-- Custom CSS -->
         <link href="assets/assets/libs/flot/css/float-chart.css" rel="stylesheet">
@@ -54,19 +53,55 @@ and open the template in the editor.
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+        
+        <!-- CSS PRINT-->
+        <link href="assets/css/print.css" rel="stylesheet" type="text/css" media="print"/>
     </head>
-
     <body>
-        <!-- ============================================================== -->
-        <!-- Preloader - style you can find in spinners.css -->
-        <!-- ============================================================== -->
-        <!--    <div class="preloader">
-                <div class="lds-ripple">
-                    <div class="lds-pos"></div>
-                    <div class="lds-pos"></div>
+        <script>
+            $(function () {
+                window.print();
+            });
+        </script>
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+
+                    </div>
+                    <div class="row m-t-25">
+                        <div class="col-12">
+                            <center><h2>Region Report</h2><br>
+                                <!--<div class="table-responsive table--no-card m-b-30">-->
+                                <table>
+                                    <!--<table id="myTable" class="table table-borderless table-striped table-earning">-->
+                                    <% List<Region> regions = (ArrayList<Region>) request.getAttribute("regions"); %>
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>NAME</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%for (Region region : regions) {%>
+                                        <tr>
+                                            <td><%=region.getRegionId()%></td>
+                                            <td><%= region.getRegionName()%></td>
+
+                                        </tr>
+                                        <% }%>
+                                    </tbody>
+                                </table>
+                            </center>
+                            <!--</div>-->
+                        </div>
+                    </div>
+
                 </div>
-            </div>-->
-        <!-- ============================================================== -->
-        <!-- Main wrapper - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <div id="main-wrapper">
+            </div>
+        </div>
+        <!-- END MAIN CONTENT-->
+    </body>
+</html>

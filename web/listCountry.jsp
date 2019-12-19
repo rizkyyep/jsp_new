@@ -93,12 +93,13 @@
                                     </td>
                                     <td class="text-right">
                                         <a href="<%= country.getCountryId()%>" class="view_data" 
-                                          data-toggle="modal" id="<%= country.getCountryId()%>" data-target="#editModal">
-                                            <i class="fas fa-edit fa-lg" style="color:#26a65b;"></i>
+                                          data-toggle="modal" id="<%= country.getCountryId()%>"data-target="#editModal">
+                                          <i class="fas fa-edit fa-lg" style="color:#26a65b;"></i>
                                         </a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;
                                         <a href="countryServlet?action=delete&id=<%= country.getCountryId()%> " 
-                                           class="btn btn-danger tombol-hapus" data-toogle="tooltip" title="Delete"><i class="fas fa-trash"></i>
+                                           class="delete-btn tombol-hapus" data-toogle="modal" title="Delete">
+                                        <i class="fas fa-trash fa-lg" style="color:#f03434;"></i>
                                         </a>
                                     </td>
                                 </tr>

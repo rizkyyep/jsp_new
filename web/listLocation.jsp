@@ -93,7 +93,12 @@
                                     <td><%= loc.getStreetAddress()%></td>
                                     <td><%= loc.getPostalCode()%></td>
                                     <td><%= loc.getCity()%></td>
-                                    <td><%= loc.getStateProvince()%></td>
+                                    <td><% if (loc.getStateProvince() == null) {
+                                            out.println("-");
+                                        } else {
+                                            out.println(loc.getStateProvince());
+                                        }
+                                        %></td>
                                     <td><%= loc.getCountryId().getCountryName()%></td>
                                     <td class="text-right">
 
@@ -103,8 +108,8 @@
                                         </a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;
                                         <a href="locationServlet?action=delete&idLoc=<%= loc.getLocationId()%> " 
-                                           class="btn btn-danger btnDelete" data-toogle="tooltip" title="Delete">
-                                            <i class="fas fa-trash"></i>
+                                           data-toogle="tooltip" title="Delete" class="delete-btn tombol-hapus">
+                                            <i class="fas fa-trash" style="color:#f03434;"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -263,3 +268,5 @@
         });
     });
 </script>
+
+<jsp:include page="templates/footer.jsp"></jsp:include>

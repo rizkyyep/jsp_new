@@ -68,6 +68,9 @@
                             <div class="col-md-3">
                                 <button data-toggle="modal" data-target="#additem" class="btn btn-primary btn-block">
                                     <i class="fas fa-plus"></i> Add Item</button>
+                                    <a href="regionServlet?action=print" 
+                                       data-toggle="tooltip" data-placement="top" class="btn btn-primary btn-block"
+                                       title="Print"><i class="fas fa-print" style=""></i> Print</a>
                             </div>
                         </div>
                     </div>
@@ -83,7 +86,7 @@
                             </thead>
                             <tbody>
                                 <% List<Region> regions = (ArrayList<Region>) request.getAttribute("regions"); %>
-                                <%for (Region region : regions) {%>
+                                <% for (Region region : regions) {%>
                                 <tr>
                                     <td><%=region.getRegionId()%></td>
                                     <td><%= region.getRegionName()%></td>
@@ -93,9 +96,9 @@
                                             <i class="fas fa-edit fa-lg" style="color:#26a65b;"></i>
                                         </a>
 
-                                        <a href="regionServlet?action=delete&id=<%= region.getRegionId() %> " 
-                                           class="btn btn-danger btnDelete" data-toogle="tooltip" title="Delete">
-                                            <i class="fas fa-trash"></i>
+                                        <a href="regionServlet?action=delete&id=<%= region.getRegionId()%> " 
+                                            data-toogle="tooltip" title="Delete" class="btnDelete">
+                                           <i class="fas fa-trash fa-lg" style="color:#f03434;"></i>
                                         </a>
 
 <!--                                        <a href="regionServlet?action=edit&id=<%= region.getRegionId()%>" 
@@ -189,7 +192,7 @@
                 }
         );
     });
-    
+
     $('.btnDelete').on('click', function () {
         event.preventDefault();
         const href = $(this).attr("href");
@@ -207,7 +210,7 @@
             }
         });
     });
-    
+
     $(document).ready(function () {
         $("body").on('click', '.view_data', function () {
             var id = $(this).attr("id");

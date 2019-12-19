@@ -23,22 +23,22 @@
                             <span class="hide-menu">Management Data </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="employeeServlet?action=list" class="sidebar-link">
-                                        <i class="mdi mdi-note-outline"></i><span class="hide-menu"> Employee </span></a>
+                                        <i class="far fa-address-card"></i><span class="hide-menu"> Employee </span></a>
                                 </li>
                                 <li class="sidebar-item"><a href="departmentServlet?action=list" class="sidebar-link">
-                                        <i class="mdi mdi-note-plus"></i><span class="hide-menu"> Department </span></a>
+                                       <i class="far fa-building"></i><span class="hide-menu"> Department </span></a>
                                 </li>
                                 <li class="sidebar-item"><a href="locationServlet?action=list" class="sidebar-link">
-                                        <i class="mdi mdi-note-plus"></i><span class="hide-menu"> Location </span></a>
+                                      <i class="fas fa-map"></i><span class="hide-menu"> Location </span></a>
                                 </li>
                                 <li class="sidebar-item"><a href="countryServlet?action=list" class="sidebar-link">
-                                        <i class="mdi mdi-note-plus"></i><span class="hide-menu"> Country </span></a>
+                                       <i class="fas fa-globe"></i><span class="hide-menu"> Country </span></a>
                                 </li>
                                 <li class="sidebar-item"><a href="jobServlet?action=list" class="sidebar-link">
-                                        <i class="mdi mdi-note-plus"></i><span class="hide-menu"> Job </span></a>
+                                      <i class="fas fa-briefcase"></i><span class="hide-menu"> Job </span></a>
                                 </li>
                                 <li class="sidebar-item"><a href="regionServlet?action=list" class="sidebar-link">
-                                        <i class="mdi mdi-note-plus"></i><span class="hide-menu"> Region </span></a>
+                                    <i class="far fa-compass"></i><span class="hide-menu"> Region </span></a>
                                 </li>
                             </ul>
                         </li>

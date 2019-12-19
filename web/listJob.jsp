@@ -75,38 +75,38 @@
                     </div>
                     <div class="card-body">
                         <table id="listItem" class="table table-borderless table-striped table-earning">
-                        <% List<Job> jobs = (ArrayList<Job>) request.getAttribute("jobs"); %>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Title</th>
-                                <th>Min Salary</th>
-                                <th>Max Salary</th>
-                                <th class="text-right">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%for (Job job : jobs) {%>
-                            <tr>
-                                <td><%=job.getJobId()%></td>
-                                <td><%= job.getJobTitle()%></td>
-                                <td><%=job.getMinSalary()%></td>
-                                <td><%= job.getMaxSalary()%></td>
-                                <td class="text-right">
-                                    <a href="<%=job.getJobId()%>" class="view_data"
-                                       data-toggle="modal" data-placement="top" id="<%=job.getJobId()%>" data-target="#editModal"
-                                       title="Edit"><i class="fas fa-edit fa-lg" style="color:#26a65b;"></i>                                     
-                                    </a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="jobServlet?action=delete&jobId=<%= job.getJobId()%>&jobTitle=<%=job.getJobTitle()%>" 
-                                       class="delete-btn btnDelete" data-toogle="modal" title="Delete">
-                                        <i class="fas fa-trash fa-lg" style="color:#f03434;"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <% }%>
-                        </tbody>
-                    </table>
+                            <% List<Job> jobs = (ArrayList<Job>) request.getAttribute("jobs"); %>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Min Salary</th>
+                                    <th>Max Salary</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%for (Job job : jobs) {%>
+                                <tr>
+                                    <td><%=job.getJobId()%></td>
+                                    <td><%= job.getJobTitle()%></td>
+                                    <td><%=job.getMinSalary()%></td>
+                                    <td><%= job.getMaxSalary()%></td>
+                                    <td class="text-right">
+                                        <a href="<%=job.getJobId()%>" class="view_data"
+                                           data-toggle="modal" data-placement="top" id="<%=job.getJobId()%>" data-target="#editModal"
+                                           title="Edit"><i class="fas fa-edit fa-lg" style="color:#26a65b;"></i>                                     
+                                        </a>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="jobServlet?action=delete&jobId=<%= job.getJobId()%>&jobTitle=<%=job.getJobTitle()%>" 
+                                           class="delete-btn btnDelete" data-toogle="modal" title="Delete">
+                                            <i class="fas fa-trash fa-lg" style="color:#f03434;"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% }%>
+                            </tbody>
+                        </table>
                     </div>  
                 </div>
             </div>
@@ -127,29 +127,42 @@
             <div class="modal-body">
                 <form action="jobServlet?action=insert" method="post" class="form-horizontal">
                     <div class="row form-group">
-                        <div class="input-group col-12 col-md-8 m-b-10">
-                            <span class="input-group-addon"><i class="fas fa-briefcase"></i></span>
+                        <div class="col col-md-3">
+                            <label for="hf-password" class=" form-control-label">Job Title</label>
+                        </div>
+                        <div class="col-12 col-md-9 m-b-10">
                             <input id="jobTitle" type="text" class="form-control" name="jobTitle" placeholder="Title" required>
                         </div>
-                        <div class="input-group col-12 col-md-8 m-b-10">
-                            <span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3 mb">
+                            <label for="hf-password" class=" form-control-label">Min Salary</label>
+                        </div>
+                        <div class="col-12 col-md-9 m-b-10">
                             <input id="minSalary" min="0" type="number" class="form-control" name="minSalary" placeholder="Minimal Salary" required>
                         </div>
-                        <div class="input-group col-12 col-md-8 m-b-10">
-                            <span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="hf-password" class=" form-control-label">Max Salary</label>
+                        </div>
+                        <div class="col-12 col-md-9">
                             <input id="maxSalary" min="0" type="number" class="form-control" name="maxSalary" placeholder="Maximal Salary" required>
                         </div>
                     </div>
-                    <div class="m-b-10">
-                        <center>
-                            <input type="submit" name="submit" value="Save" class="btn btn-primary"/>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
-                        </center>
+                    <div class="row form-group">
+                        <div class="col-12">
+                            <center>
+                                <input type="submit" name="submit" value="Save" class="btn btn-primary"/>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+                            </center>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- end modal add item -->
 
@@ -174,8 +187,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#listItem').DataTable(
-            
-        );
+
+                );
     });
 
     $('.btnDelete').on('click', function () {

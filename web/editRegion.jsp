@@ -24,6 +24,6 @@
     </div>
     <center>
         <input type="submit" name="submit" value="Save" class="btn btn-primary"/>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"<i class="fas fa-window-close"></i> Cancel</a>
     </center>
 </form>

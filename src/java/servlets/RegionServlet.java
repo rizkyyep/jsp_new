@@ -1,4 +1,3 @@
-
 package servlets;
 
 /*
@@ -93,6 +92,9 @@ public class RegionServlet extends HttpServlet {
                 case "update":
                     update(request, response);
                     break;
+                case "print":
+                    print(request, response);
+                    break;
                 default:
 //                    redirect = "listRegion.jsp";
 //                    request.setAttribute("regions", regions);
@@ -186,6 +188,15 @@ public class RegionServlet extends HttpServlet {
         return this.dao.select("Region");
     }
 
+    private void print(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        List<Region> regions = this.dao.select("Region");
+        request.setAttribute("regions", regions);
+
+        RequestDispatcher rd = request.getRequestDispatcher("report/RegionReport.jsp");
+        rd.forward(request, response);
+    }
+
     /**
      * Returns a short description of the servlet.
      *
@@ -197,4 +208,3 @@ public class RegionServlet extends HttpServlet {
     }// </editor-fold>
 
 }
-

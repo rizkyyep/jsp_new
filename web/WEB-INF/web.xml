@@ -20,6 +20,14 @@
         <servlet-name>CountryServlet</servlet-name>
         <servlet-class>servlets.CountryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DepartmentServlet</servlet-name>
+        <servlet-class>servlets.DepartmentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeeServlet</servlet-name>
+        <servlet-class>servlets.EmployeeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegionServlets</servlet-name>
         <url-pattern>/regionServlets</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>CountryServlet</servlet-name>
         <url-pattern>/countryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DepartmentServlet</servlet-name>
+        <url-pattern>/departmentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeServlet</servlet-name>
+        <url-pattern>/employeeServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

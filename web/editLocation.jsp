@@ -75,6 +75,6 @@
     <center>
         <button class="btn btn-primary" type="submit" name="submit" onclick="success()"><i class="fas fa-save"></i> Save</button>
         <!--<input type="submit" name="submit" value="Save" class="btn btn-primary"/>-->
-        <a href="locationServlet?action=list" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+        <a href="locationServlet?action=list" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-window-close"></i> Cancel</a>
     </center>
 </form>
