@@ -41,7 +41,7 @@
                         </li>
                         
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" 
-                            href="pages-elements.html" aria-expanded="false"><i class="fas fa-power-off"></i>
+                            href="login.jsp" aria-expanded="false"><i class="fas fa-power-off"></i>
                             <span class="hide-menu"> Logout</span></a>
                         </li>
                         

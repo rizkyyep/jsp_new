@@ -7,6 +7,7 @@ package models;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author DELL
+ * @author Elsa
  */
 @Entity
 @Table(name = "USER_ACCOUNT")
@@ -27,7 +28,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "UserAccount.findAll", query = "SELECT u FROM UserAccount u")
     , @NamedQuery(name = "UserAccount.findById", query = "SELECT u FROM UserAccount u WHERE u.id = :id")
     , @NamedQuery(name = "UserAccount.findByUsername", query = "SELECT u FROM UserAccount u WHERE u.username = :username")
-    , @NamedQuery(name = "UserAccount.findByPassword", query = "SELECT u FROM UserAccount u WHERE u.password = :password")})
+    , @NamedQuery(name = "UserAccount.findByPassword", query = "SELECT u FROM UserAccount u WHERE u.password = :password")
+    , @NamedQuery(name = "UserAccount.findByEmail", query = "SELECT u FROM UserAccount u WHERE u.email = :email")
+    , @NamedQuery(name = "UserAccount.findByStatus", query = "SELECT u FROM UserAccount u WHERE u.status = :status")})
 public class UserAccount implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,6 +45,10 @@ public class UserAccount implements Serializable {
     @Basic(optional = false)
     @Column(name = "PASSWORD")
     private String password;
+    @Column(name = "EMAIL")
+    private String email;
+    @Column(name = "STATUS")
+    private Integer status;
 
     public UserAccount() {
     }
@@ -50,10 +57,12 @@ public class UserAccount implements Serializable {
         this.id = id;
     }
 
-    public UserAccount(Integer id, String username, String password) {
+    public UserAccount(Integer id, String username, String password, String email, Integer status) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -78,6 +87,22 @@ public class UserAccount implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override
