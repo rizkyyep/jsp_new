@@ -8,6 +8,10 @@
         <servlet-name>RegionServlet</servlet-name>
         <servlet-class>servlets.RegionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DepartmentServlet</servlet-name>
+        <servlet-class>servlets.DepartmentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegionServlets</servlet-name>
         <url-pattern>/regionServlets</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>RegionServlet</servlet-name>
         <url-pattern>/regionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DepartmentServlet</servlet-name>
+        <url-pattern>/departmentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
