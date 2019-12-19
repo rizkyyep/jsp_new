@@ -3,7 +3,7 @@
     Created on : Dec 18, 2019, 11:46:48 AM
     Author     : Rizky
 --%>
-<jsp:include page="templates/header.jsp"></jsp:include>
+<jsp:include page="templates/header.html"></jsp:include>
 <jsp:include page="templates/topbar.jsp"></jsp:include>
 <jsp:include page="templates/sidebar.jsp"></jsp:include>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -31,6 +31,9 @@
                                 <li class="sidebar-item"><a href="locationServlet?action=list" class="sidebar-link">
                                         <i class="mdi mdi-note-plus"></i><span class="hide-menu"> Location </span></a>
                                 </li>
+                                <li class="sidebar-item"><a href="countryServlet?action=list" class="sidebar-link">
+                                        <i class="mdi mdi-note-plus"></i><span class="hide-menu"> Country </span></a>
+                                </li>
                                 <li class="sidebar-item"><a href="jobServlet?action=list" class="sidebar-link">
                                         <i class="mdi mdi-note-plus"></i><span class="hide-menu"> Job </span></a>
                                 </li>

@@ -1,8 +1,11 @@
 <%-- 
-    Document   : listRegion
-    Created on : Dec 18, 2019, 1:22:36 PM
+    Document   : listCountry
+    Created on : Dec 18, 2019, 3:23:39 PM
     Author     : Rizky
 --%>
+
+
+<%@page import="models.Country"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.Region"%>
 <%@page import="java.util.List"%>
@@ -24,8 +27,6 @@
                 <div class="ml-auto text-right">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <!--                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                                        <li class="breadcrumb-item active" aria-current="page">Library</li>-->
                         </ol>
                     </nav>
                 </div>
@@ -63,7 +64,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-9">
-                                <h3>Region Data</h3>
+                                <h3>Country Data</h3>
                             </div>
                             <div class="col-md-3">
                                 <button data-toggle="modal" data-target="#additem" class="btn btn-primary btn-block">
@@ -72,39 +73,33 @@
                         </div>
                     </div>
                     <div class="card-body">
-
-                        <table id="listItem" class="table table-striped table-bordered">
+                        <table id="listItem" class="table table-borderless table-striped table-earning">
+                            <% List<Country> countrys = (ArrayList<Country>) request.getAttribute("countries"); %>
                             <thead>
                                 <tr>
-                                    <th>Region ID</th>
-                                    <th>Region Name</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Region</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% List<Region> regions = (ArrayList<Region>) request.getAttribute("regions"); %>
-                                <%for (Region region : regions) {%>
+                                <%for (Country country : countrys) {%>
                                 <tr>
-                                    <td><%=region.getRegionId()%></td>
-                                    <td><%= region.getRegionName()%></td>
+                                    <td><%=country.getCountryId()%></td>
+                                    <td><%= country.getCountryName()%></td>
+                                    <td>
+                                        <%=  country.getRegionId().getRegionName()%>
+                                    </td>
                                     <td class="text-right">
-                                        <a href="<%= region.getRegionId()%>" class="view_data" 
-                                           data-toggle="modal" id="<%= region.getRegionId()%>" data-target="#editModal">
+                                        <a href="<%= country.getCountryId()%>" class="view_data" 
+                                          data-toggle="modal" id="<%= country.getCountryId()%>" data-target="#editModal">
                                             <i class="fas fa-edit fa-lg" style="color:#26a65b;"></i>
                                         </a>
-
-                                        <a href="regionServlet?action=delete&id=<%= region.getRegionId() %> " 
-                                           class="btn btn-danger btnDelete" data-toogle="tooltip" title="Delete">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-
-<!--                                        <a href="regionServlet?action=edit&id=<%= region.getRegionId()%>" 
-                                           data-toggle="tooltip" data-placement="top" 
-                                           title="Edit"><i class="fas fa-edit fa-lg" style="color:#26a65b;"></i></a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="regionServlet?action=delete&id=<%=region.getRegionId()%> " 
-                                           data-toggle="tooltip" data-placement="top" 
-                                           title="Delete"><i class="fas fa-trash fa-lg" style="color:#f03434;"></i></a>-->
+                                        <a href="countryServlet?action=delete&id=<%= country.getCountryId()%> " 
+                                           class="btn btn-danger tombol-hapus" data-toogle="tooltip" title="Delete"><i class="fas fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 <% }%>
@@ -116,52 +111,54 @@
         </div>
     </div>
 </div>
+                            
+                            
 
-
-
-<!-- modal add item -->
-<div class="modal fade" id="additem" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+<!-- modal country large -->
+<div class="modal fade" id="additem" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="smallmodalLabel">Add Data</h5>
+                <h5 class="modal-title" id="largeModalLabel">Add New Country</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="regionServlet?action=insert" method="post" class="form-horizontal">
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="hf-password" class=" form-control-label">Region Name</label>
-                        </div>
-                        <div class="col-12 col-md-9">
-                            <input type="text" id="nameRegion" name="nameRegion" placeholder="Enter Region Name..." class="form-control">
-                        </div>
+                <form action="countryServlet?action=insert" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label>Country Name</label>
+                        <input class="form-control" type="text" name="countryName" id="countryName" placeholder="Country Name">
                     </div>
-                    <center>
-                        <input type="submit" name="submit" value="Save" class="btn btn-primary"/>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    </center>
-                </form>
+                    <div class="form-group">
+                        <label>Region Name</label>
+                        <% List<Region> regions = (ArrayList<Region>) request.getAttribute("regions"); %>
+                        <select class="form-control" name="regionId" id="regionId">
+                            <%for (Region region : regions) {%>
+                            <option value="<%= region.getRegionId()%>">
+                                <%= region.getRegionId()%> - <%= region.getRegionName()%>
+                            </option>
+                            <% }%>
+                        </select>
+                    </div>
             </div>
             <div class="modal-footer">
-
-                <!--<button type="button" class="btn btn-primary">Confirm</button>-->
+                <input type="submit" name="submit" value="Save" class="btn btn-primary "/>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
-<!-- end modal add item -->
+<!-- end modal large -->
 
 
-<!--edit modal-->
 <!-- memulai modal nya. pada id="$myModal" harus sama dengan data-target="#myModal" pada tombol di atas -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Edit Location</h5>
+                <h5 class="modal-title" id="myModalLabel">Edit Country</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -169,28 +166,46 @@
             <!-- memulai untuk konten dinamis -->
             <!-- lihat id="data_siswa", ini yang di pangging pada ajax di bawah -->
             <div class="modal-body" id="data">
+
             </div>
             <!-- selesai konten dinamis -->
             <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
-<!-- end edit modal-->
-
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('#listItem').DataTable(
                 {
                     "columnDefs": [
-                        {"orderable": false, "targets": 2}
+                        {"orderable": false, "targets": 3}
                     ]
                 }
         );
     });
     
-    $('.btnDelete').on('click', function () {
+//      $(document).ready(function () {
+//        $("body").on('click', '.view_data', function () {
+        $('.view_data').on('click', function () {
+            const id = $(this).attr("id");
+            $.ajax({
+                url: "countryServlet?action=byId&id=" + id,
+                type: "POST",
+                data: {id: id},
+                success: function (data) {
+                    $("#data").html(data);
+                    $("#editModal").modal('show', {backdrop: 'true'});
+                }
+            });
+        });
+//    });
+</script>
+
+<script>
+    $('.tombol-hapus').on('click', function () {
         event.preventDefault();
         const href = $(this).attr("href");
         swal({
@@ -207,19 +222,6 @@
             }
         });
     });
-    
-    $(document).ready(function () {
-        $("body").on('click', '.view_data', function () {
-            var id = $(this).attr("id");
-            $.ajax({
-                url: "regionServlet?action=edit&id=" + id,
-                type: "GET",
-                data: {id: id},
-                success: function (data) {
-                    $("#data").html(data);
-                    $("#editModal").modal('show', {backdrop: 'true'});
-                }
-            });
-        });
-    });
 </script>
+
+<jsp:include page="templates/footer.jsp"></jsp:include>

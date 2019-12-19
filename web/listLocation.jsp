@@ -1,8 +1,11 @@
 <%-- 
-    Document   : listRegion
-    Created on : Dec 18, 2019, 1:22:36 PM
+    Document   : listLocation
+    Created on : Dec 18, 2019, 2:42:33 PM
     Author     : Rizky
 --%>
+
+<%@page import="models.Country"%>
+<%@page import="models.Location"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.Region"%>
 <%@page import="java.util.List"%>
@@ -24,8 +27,6 @@
                 <div class="ml-auto text-right">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <!--                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                                        <li class="breadcrumb-item active" aria-current="page">Library</li>-->
                         </ol>
                     </nav>
                 </div>
@@ -63,7 +64,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-9">
-                                <h3>Region Data</h3>
+                                <h3>Location Data</h3>
                             </div>
                             <div class="col-md-3">
                                 <button data-toggle="modal" data-target="#additem" class="btn btn-primary btn-block">
@@ -72,39 +73,39 @@
                         </div>
                     </div>
                     <div class="card-body">
-
-                        <table id="listItem" class="table table-striped table-bordered">
+                        <table id="listItem" class="table table-responsive table-borderless table-striped table-earning"> 
                             <thead>
                                 <tr>
-                                    <th>Region ID</th>
-                                    <th>Region Name</th>
+                                    <th>Location Id</th>
+                                    <th>Street Address</th>
+                                    <th>Postal Code</th>
+                                    <th>City</th>
+                                    <th>State Province</th>
+                                    <th>Country Name</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% List<Region> regions = (ArrayList<Region>) request.getAttribute("regions"); %>
-                                <%for (Region region : regions) {%>
+                                <% List<Location> locations = (ArrayList<Location>) request.getAttribute("locations"); %>
+                                <%for (Location loc : locations) {%>
                                 <tr>
-                                    <td><%=region.getRegionId()%></td>
-                                    <td><%= region.getRegionName()%></td>
+                                    <td><%= loc.getLocationId()%></td>
+                                    <td><%= loc.getStreetAddress()%></td>
+                                    <td><%= loc.getPostalCode()%></td>
+                                    <td><%= loc.getCity()%></td>
+                                    <td><%= loc.getStateProvince()%></td>
+                                    <td><%= loc.getCountryId().getCountryName()%></td>
                                     <td class="text-right">
-                                        <a href="<%= region.getRegionId()%>" class="view_data" 
-                                           data-toggle="modal" id="<%= region.getRegionId()%>" data-target="#editModal">
+
+                                        <a href="<%= loc.getLocationId()%>" class="view_data" 
+                                           data-toggle="modal" id="<%= loc.getLocationId()%>" data-target="#editModal">
                                             <i class="fas fa-edit fa-lg" style="color:#26a65b;"></i>
                                         </a>
-
-                                        <a href="regionServlet?action=delete&id=<%= region.getRegionId() %> " 
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="locationServlet?action=delete&idLoc=<%= loc.getLocationId()%> " 
                                            class="btn btn-danger btnDelete" data-toogle="tooltip" title="Delete">
                                             <i class="fas fa-trash"></i>
                                         </a>
-
-<!--                                        <a href="regionServlet?action=edit&id=<%= region.getRegionId()%>" 
-                                           data-toggle="tooltip" data-placement="top" 
-                                           title="Edit"><i class="fas fa-edit fa-lg" style="color:#26a65b;"></i></a>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="regionServlet?action=delete&id=<%=region.getRegionId()%> " 
-                                           data-toggle="tooltip" data-placement="top" 
-                                           title="Delete"><i class="fas fa-trash fa-lg" style="color:#f03434;"></i></a>-->
                                     </td>
                                 </tr>
                                 <% }%>
@@ -124,23 +125,63 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="smallmodalLabel">Add Data</h5>
+                <h5 class="modal-title" id="smallmodalLabel">Add Location</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="regionServlet?action=insert" method="post" class="form-horizontal">
+                <form action="locationServlet?action=insert" method="post" class="form-horizontal">
                     <div class="row form-group">
                         <div class="col col-md-3">
-                            <label for="hf-password" class=" form-control-label">Region Name</label>
+                            <label for="locationAddress" class=" form-control-label">Street Address</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="text" id="nameRegion" name="nameRegion" placeholder="Enter Region Name..." class="form-control">
+                            <input type="text" id="streetAddress" name="streetAddress" placeholder="Enter Street Address..." class="form-control" required="">
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="Postal Code" class=" form-control-label">Postal Code</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="postalCode" name="postalCode" placeholder="Enter Postal Code..." class="form-control" required="">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="City" class=" form-control-label">City</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="city" name="city" placeholder="Enter City..." class="form-control" required="">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="stateProvince" class=" form-control-label">State Province</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="stateProvince" name="stateProvince" placeholder="Enter State Province..." class="form-control">
+                        </div>
+                    </div>
+                    <% List<Country> countries = (ArrayList<Country>) request.getAttribute("countries"); %>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="countryId" class=" form-control-label">Country</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <select name="countryId" class="form-control" required>
+                                <option value="">Choose A Country</option>
+                                <% for (Country coun : countries) {%>
+                                <option value="<%= coun.getCountryId()%>"><%= coun.getCountryId()%> - <%= coun.getCountryName()%></option>
+                                <% }%>
+                            </select>
+                        </div>
+                    </div>
+
                     <center>
-                        <input type="submit" name="submit" value="Save" class="btn btn-primary"/>
+                        <button class="btn btn-primary" type="submit" name="submit"><i class="fas fa-save" onclick="success()"></i> Save</button>
+                        <!--<input type="submit" name="submit" value="Save" class="btn btn-primary"/>-->
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </center>
                 </form>
@@ -178,18 +219,17 @@
 </div>
 <!-- end edit modal-->
 
-
 <script type="text/javascript">
     $(document).ready(function () {
         $('#listItem').DataTable(
                 {
                     "columnDefs": [
-                        {"orderable": false, "targets": 2}
+                        {"orderable": false, "targets": 6}
                     ]
                 }
         );
     });
-    
+
     $('.btnDelete').on('click', function () {
         event.preventDefault();
         const href = $(this).attr("href");
@@ -207,12 +247,12 @@
             }
         });
     });
-    
+
     $(document).ready(function () {
         $("body").on('click', '.view_data', function () {
             var id = $(this).attr("id");
             $.ajax({
-                url: "regionServlet?action=edit&id=" + id,
+                url: "locationServlet?action=edit&id=" + id,
                 type: "GET",
                 data: {id: id},
                 success: function (data) {

@@ -8,6 +8,18 @@
         <servlet-name>RegionServlet</servlet-name>
         <servlet-class>servlets.RegionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LocationServlet</servlet-name>
+        <servlet-class>servlets.LocationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>JobServlet</servlet-name>
+        <servlet-class>servlets.JobServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CountryServlet</servlet-name>
+        <servlet-class>servlets.CountryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegionServlets</servlet-name>
         <url-pattern>/regionServlets</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>RegionServlet</servlet-name>
         <url-pattern>/regionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LocationServlet</servlet-name>
+        <url-pattern>/locationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JobServlet</servlet-name>
+        <url-pattern>/jobServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CountryServlet</servlet-name>
+        <url-pattern>/countryServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
